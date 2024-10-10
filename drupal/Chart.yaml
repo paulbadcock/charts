@@ -3,13 +3,13 @@ description: |-
 
   Wee
 annotations:
-  charts.openshift.io/name: Red Hat PostgreSQL database service, with persistent storage (experimental)
-  charts.openshift.io/provider: Red Hat
-  charts.openshift.io/providerType: redhat
+  charts.openshift.io/name: Drupal
+  charts.openshift.io/provider: CSDS
+  charts.openshift.io/providerType: custom
 apiVersion: v2
 appVersion: 0.0.3
-name: postgresql-persistent
-tags: database,postgresql
+name: drupal
+tags: php,drupal
 sources:
-  - https://github.com/sclorg/helm-charts
-version: 0.0.3
+  - https://github.com/something/chart
+version: 0.0.1

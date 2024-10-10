@@ -1,0 +1,4 @@
+memory_limit: 512Mi
+namespace: drupal
+volume_capacity: 1Gi
+site_name: app
