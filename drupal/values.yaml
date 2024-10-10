@@ -1,4 +1,9 @@
 memory_limit: 512Mi
+cpu_limit: 500m
 namespace: drupal
 volume_capacity: 1Gi
 site_name: app
+
+config:
+  port: 8080
+  cim_update: false

@@ -9,31 +9,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.database_service_name }}
+      name: {{ .Values.site_name }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        name: {{ .Values.database_service_name }}
+        name: {{ .Values.site_name }}
     spec:
       containers:
       - env:
-        - name: POSTGRESQL_USER
-          valueFrom:
-            secretKeyRef:
-              key: database-user
-              name: {{ .Values.database_service_name }}
-        - name: POSTGRESQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: database-password
-              name: {{ .Values.database_service_name }}
-        - name: POSTGRESQL_DATABASE
-          valueFrom:
-            secretKeyRef:
-              key: database-name
-              name: {{ .Values.database_service_name }}
+        - name: DRUPAL_CIM_UPDATE
+          value: {{ .Values.config.cim_update }}
         image: " "
         imagePullPolicy: IfNotPresent
         livenessProbe:
@@ -47,26 +34,17 @@ spec:
         ports:
         - containerPort: {{ .Values.config.port }}
           protocol: TCP
-        readinessProbe:
-          exec:
-            command:
-            - /usr/libexec/check-container
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
         resources:
           limits:
             memory: {{ .Values.memory_limit }}
-        securityContext:
-          capabilities: {}
-          privileged: false
-        terminationMessagePath: /dev/termination-log
-        volumeMounts:
-        - mountPath: /var/lib/pgsql/data
-          name: {{ .Values.database_service_name }}-data
+            cpu: {{ .Values.cpu_limit }}
+#        volumeMounts:
+#        - mountPath: /var/lib/pgsql/data
+#          name: {{ .Values.database_service_name }}-data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      volumes:
-      - name: {{ .Values.database_service_name }}-data
-        persistentVolumeClaim:
-          claimName: {{ .Values.database_service_name }}
+#      volumes:
+#      - name: {{ .Values.database_service_name }}-data
+#        persistentVolumeClaim:
+#          claimName: {{ .Values.database_service_name }}
 status: {}
