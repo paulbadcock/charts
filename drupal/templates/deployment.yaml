@@ -25,7 +25,7 @@ spec:
           - name: PHP_MEMORY_LIMIT
             value: {{ .Values.deployment.env.php_memory }}
           - name: DISPLAY_ERRORS
-            value: {{ .Values.deployment.env.display_errors}}
+            value: '{{ .Values.deployment.env.display_errors}}'
           - name: CONFIG_ENV
             value: {{ .Values.deployment.env.config_env }}
         envFrom:
