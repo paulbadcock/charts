@@ -4,6 +4,12 @@ site_name: app
 replicaCount: 1
 revisionHistoryLimit: 2
 
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 60
+
 config:
   port: 80
   cim_update: false
