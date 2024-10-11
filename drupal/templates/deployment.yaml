@@ -6,13 +6,15 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   name: {{ .Values.site_name }}
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
   selector:
     matchLabels:
       name: {{ .Values.site_name }}
   strategy:
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -21,11 +23,11 @@ spec:
       containers:
       - env:
         - name: DRUPAL_CIM_UPDATE
-          value: '{{ .Values.config.cim_update }}'
+          value: 'false'
         - name: DISPLAY_ERRORS
           value: 'ON'
         - name: PHP_MEMORY_LIMIT
-          value: 1G
+          value: 768M
 #        envFrom:
 #          - secretRef:
 #            name: drupal-mysqldb

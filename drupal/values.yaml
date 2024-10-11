@@ -1,6 +1,9 @@
 namespace: drupal
-volume_capacity: 1Gi
 site_name: app
+
+replicaCount: 1
+revisionHistoryLimit: 2
+
 config:
   port: 80
   cim_update: false
