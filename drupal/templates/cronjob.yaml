@@ -19,5 +19,6 @@ spec:
                 - 'curl http://{{ .Values.site_name }}:{{ .Values.service.port }}/cron/{{ .Values.cronjob.token }}'
               resources: {}
               imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 1
