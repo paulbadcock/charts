@@ -30,7 +30,7 @@ spec:
           value: 768M
         envFrom:
           - secretRef:
-              name: '{{ .Values.site_name }}-mysqldb'
+              name: {{ .Values.site_name }}-mysqldb
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         livenessProbe:
