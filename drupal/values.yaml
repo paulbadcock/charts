@@ -1,12 +1,13 @@
 namespace: drupal
 volume_capacity: 1Gi
 site_name: app
+config:
+  port: 8080
+  cim_update: false
 
 image:
   repository: nginx
-  # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+  pullPolicy: Always
   tag: "latest"
 
 resources:
@@ -17,6 +18,12 @@ resources:
     cpu: 100m
     memory: 256Mi
 
-config:
-  port: 8080
-  cim_update: false
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
