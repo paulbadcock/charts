@@ -20,8 +20,8 @@ deployment:
   revisionHistoryLimit: 2
   port: 80
   env:
-    DRUPAL_CIM_UPDATE: 'false'
-    DISPLAY_ERRORS: 'ON'
+    DRUPAL_CIM_UPDATE: false
+    DISPLAY_ERRORS: ON
     PHP_MEMORY_LIMIT: 768M
 
 service:
