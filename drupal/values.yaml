@@ -19,10 +19,7 @@ deployment:
   replicaCount: 1
   revisionHistoryLimit: 2
   port: 80
-  env:
-    DRUPAL_CIM_UPDATE: "false"
-    DISPLAY_ERRORS: "ON"
-    PHP_MEMORY_LIMIT: 768M
+  php_memory: 768M
 
 service:
   type: ClusterIP

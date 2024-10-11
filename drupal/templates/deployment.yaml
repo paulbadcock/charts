@@ -23,7 +23,7 @@ spec:
       containers:
       - env:
           - name: PHP_MEMORY_LIMIT
-            value: {{ mul .Values.resources.limit.memory 0.75 }}
+            value: {{ .Values.deployment.php_memory }}
         envFrom:
           - secretRef:
               name: {{ .Values.site_name }}-mysqldb
