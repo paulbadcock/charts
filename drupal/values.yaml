@@ -19,7 +19,10 @@ deployment:
   replicaCount: 1
   revisionHistoryLimit: 2
   port: 80
-  php_memory: 768M
+  env:
+    php_memory: 768M
+    display_errors: ON
+    config_env: nonprod
 
 service:
   type: ClusterIP

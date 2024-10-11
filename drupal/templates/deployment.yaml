@@ -23,7 +23,11 @@ spec:
       containers:
       - env:
           - name: PHP_MEMORY_LIMIT
-            value: {{ .Values.deployment.php_memory }}
+            value: {{ .Values.deployment.env.php_memory }}
+          - name: DISPLAY_ERRORS
+            value: {{ .Values.deployment.env.display_errors}}
+          - name: CONFIG_ENV
+            value: {{ .Values.deployment.env.config_env }}
         envFrom:
           - secretRef:
               name: {{ .Values.site_name }}-mysqldb
