@@ -16,5 +16,8 @@ spec:
       restartPolicy: Never
       containers:
       - name:  {{ .Values.site_name }}-updb
-        image: "alpine:3.3"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        envFrom:
+        - secretRef:
+            name: {{ .Values.site_name }}-mysqldb
         command: ["/bin/sleep","{{ default "10" .Values.sleepyTime }}"]
