@@ -28,9 +28,9 @@ spec:
           value: 'ON'
         - name: PHP_MEMORY_LIMIT
           value: 768M
-#        envFrom:
-#          - secretRef:
-#            name: drupal-mysqldb
+        envFrom:
+          - secretRef:
+            name: {{ .Values.site_name }}-mysqldb
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         livenessProbe:
