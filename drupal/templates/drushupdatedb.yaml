@@ -11,7 +11,7 @@ metadata:
 spec:
   template:
     metadata:
-      name: "{{ .Values.site_name }}-updb"
+      name: {{ .Values.site_name }}updb
     spec:
       restartPolicy: Never
       containers:
