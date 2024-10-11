@@ -4,7 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  name: {{ .Release.Name }}
+  name: {{ .Values.site_name }}
 spec:
   replicas: 1
   selector:
