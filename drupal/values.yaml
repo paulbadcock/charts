@@ -22,8 +22,7 @@ database:
   password: dbpassword
 
 post_task:
-  sleepyTime: 60
-  command: "/bin/sleep"
+  command: "echo hi"
   # command: '/opt/app-root/src/vendor/drush/drush/drush updb'
 
 pdb:
