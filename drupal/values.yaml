@@ -26,4 +26,3 @@ readinessProbe:
   httpGet:
     path: /
     port: http
-
