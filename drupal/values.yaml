@@ -9,6 +9,12 @@ autoscaling:
   maxReplicas: 5
   targetCPUUtilizationPercentage: 50
 
+cronjob:
+  suspend: true
+  schedule: '*/30 * * * *'
+  token: 'abc123'
+  image: registry.access.redhat.com/ubi9/ubi:latest
+
 deployment:
   port: 80
 

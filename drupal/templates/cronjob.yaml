@@ -1,0 +1,23 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: {{ .Values.site_name }}-cron
+spec:
+  schedule: '{{ .Values.cronjob.schedule }}'
+  concurrencyPolicy: Forbid
+  suspend: {{ .Values.cronjob.suspend }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ .Values.site_name }}-cron
+              image: '{{ .Values.cronjob.image }}'
+              args:
+                - /bin/sh
+                - '-c'
+                - 'curl http://{{ .Values.site_name }}:{{ .Values.service.port }}/cron/{{ .Values.cronjob.token }}'
+              resources: {}
+              imagePullPolicy: IfNotPresent
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
