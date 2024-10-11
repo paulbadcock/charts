@@ -1,4 +1,7 @@
 site_name: app
+storage_size: 1Gi
+storage_class: nfs-client
+# openshift onprem nfs-rwx
 
 autoscaling:
   enabled: true
