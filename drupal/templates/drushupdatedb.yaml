@@ -20,4 +20,4 @@ spec:
         envFrom:
         - secretRef:
             name: {{ .Values.site_name }}-mysqldb
-        command: [{{ .Values.post_task.command |quote }}
+        command: [{{ .Values.post_task.command | quote }}
