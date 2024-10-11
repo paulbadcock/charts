@@ -1,0 +1,9 @@
+kind: PodDisruptionBudget
+apiVersion: policy/v1
+metadata:
+  name: {{ .Values.site_name }}
+spec:
+  minAvailable: {{ .Values.pdb.minAvailable }}
+  selector:
+    matchLabels:
+      app: {{ .Values.site_name }}
