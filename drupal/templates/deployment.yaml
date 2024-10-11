@@ -43,15 +43,13 @@ spec:
           protocol: TCP
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-#        volumeMounts:
-#        - mountPath: /var/lib/pgsql/data
-#          name: {{ .Values.database_service_name }}-data
-#            - name: drupal-nfs
-#              mountPath: /opt/app-root/src/private-files
-#              subPath: private-files
-#            - name: drupal-nfs
-#              mountPath: /opt/app-root/src/web/sites/default/files
-#              subPath: files
+        volumeMounts:
+          - name: drupal-nfs
+            mountPath: /opt/app-root/src/private-files
+            subPath: private-files
+          - name: drupal-nfs
+            mountPath: /opt/app-root/src/web/sites/default/files
+            subPath: files
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       volumes:
