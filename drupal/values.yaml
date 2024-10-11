@@ -1,8 +1,21 @@
-memory_limit: 512Mi
-cpu_limit: 500m
 namespace: drupal
 volume_capacity: 1Gi
 site_name: app
+
+image:
+  repository: nginx
+  # This sets the pull policy for images.
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 1024Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
 
 config:
   port: 8080

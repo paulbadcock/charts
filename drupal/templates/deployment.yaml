@@ -21,8 +21,8 @@ spec:
       - env:
         - name: DRUPAL_CIM_UPDATE
           value: '{{ .Values.config.cim_update }}'
-        image: " "
-        imagePullPolicy: IfNotPresent
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -35,9 +35,7 @@ spec:
         - containerPort: {{ .Values.config.port }}
           protocol: TCP
         resources:
-          limits:
-            memory: {{ .Values.memory_limit }}
-            cpu: {{ .Values.cpu_limit }}
+          {{- toYaml .Values.resources | nindent 10 }}
 #        volumeMounts:
 #        - mountPath: /var/lib/pgsql/data
 #          name: {{ .Values.database_service_name }}-data
