@@ -6,4 +6,4 @@ site_name: app
 
 config:
   port: 8080
-  cim_update: false
+  cim_update: 'false'
