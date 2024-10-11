@@ -7,9 +7,9 @@ metadata:
   name: {{ .Values.site_name }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.deployment.replicaCount }}
   {{- end }}
-  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit }}
   selector:
     matchLabels:
       name: {{ .Values.site_name }}
@@ -22,12 +22,7 @@ spec:
     spec:
       containers:
       - env:
-        - name: DRUPAL_CIM_UPDATE
-          value: 'false'
-        - name: DISPLAY_ERRORS
-          value: 'ON'
-        - name: PHP_MEMORY_LIMIT
-          value: 768M
+          {{- toYaml .Values.deployment.env | nindent 10 }}
         envFrom:
           - secretRef:
               name: {{ .Values.site_name }}-mysqldb
