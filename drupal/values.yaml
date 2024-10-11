@@ -15,6 +15,12 @@ cronjob:
   token: 'abc123'
   image: registry.access.redhat.com/ubi9/ubi:latest
 
+database:
+  database: db
+  host: dbhost
+  username: dbuser
+  password: dbpassword
+
 pdb:
   minAvailable: 1
 
