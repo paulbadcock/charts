@@ -20,4 +20,4 @@ spec:
         envFrom:
         - secretRef:
             name: {{ .Values.site_name }}-mysqldb
-        command: ["/bin/sleep","{{ default "10" .Values.sleepyTime }}"]
+        command: ["/opt/app-root/src/vendor/drush/drush/drush updb","{{ default "10" .Values.sleepyTime }}"]

@@ -21,6 +21,8 @@ database:
   username: dbuser
   password: dbpassword
 
+sleepyTime: 60
+
 pdb:
   minAvailable: 1
 
