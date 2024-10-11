@@ -21,8 +21,8 @@ spec:
         name: {{ .Values.site_name }}
     spec:
       containers:
-      - env:
-          {{- toYaml .Values.deployment.env | nindent 10 }}
+      - env:        
+        {{- toYaml .Values.deployment.env | nindent 12 }}
         envFrom:
           - secretRef:
               name: {{ .Values.site_name }}-mysqldb
