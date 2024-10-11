@@ -22,7 +22,7 @@ database:
   password: dbpassword
 
 post_task:
-  command: "echo hi"
+  command: "ls -la"
   # command: '/opt/app-root/src/vendor/drush/drush/drush updb'
 
 pdb:
