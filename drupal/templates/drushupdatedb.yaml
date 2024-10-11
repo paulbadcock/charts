@@ -5,7 +5,7 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": post-install
+    "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
@@ -20,4 +20,4 @@ spec:
         envFrom:
         - secretRef:
             name: {{ .Values.site_name }}-mysqldb
-        command: ["/opt/app-root/src/vendor/drush/drush/drush updb","{{ default "10" .Values.sleepyTime }}"]
+        command: [{{ .Values.post_task.command |quote }},"{{ default "10" .Values.sleepyTime }}"]

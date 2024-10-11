@@ -21,7 +21,10 @@ database:
   username: dbuser
   password: dbpassword
 
-sleepyTime: 60
+post_task:
+  sleepyTime: 60
+  command: "/bin/sleep"
+  # command: '/opt/app-root/src/vendor/drush/drush/drush updb'
 
 pdb:
   minAvailable: 1
