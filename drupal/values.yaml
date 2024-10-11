@@ -3,6 +3,9 @@ storage_size: 1Gi
 storage_class: nfs-client
 # openshift onprem nfs-rwx
 
+ingress:
+  host: bob.tld
+
 autoscaling:
   enabled: true
   minReplicas: 2
