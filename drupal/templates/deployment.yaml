@@ -21,7 +21,7 @@ spec:
       - env:
         - name: DRUPAL_CIM_UPDATE
           value: '{{ .Values.config.cim_update }}'
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: Always
         livenessProbe:
           exec:
