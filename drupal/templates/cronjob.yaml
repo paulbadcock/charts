@@ -1,7 +1,7 @@
 kind: CronJob
 apiVersion: batch/v1
 metadata:
-  name: {{ .Values.site_name }}-cron
+  name: {{ .Values.site_name }}
 spec:
   schedule: '{{ .Values.cronjob.schedule }}'
   concurrencyPolicy: Forbid
