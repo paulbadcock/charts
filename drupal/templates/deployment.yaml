@@ -20,7 +20,7 @@ spec:
       containers:
       - env:
         - name: DRUPAL_CIM_UPDATE
-          value: {{ .Values.config.cim_update }}
+          value: '{{ .Values.config.cim_update }}'
         image: " "
         imagePullPolicy: IfNotPresent
         livenessProbe:
