@@ -54,11 +54,8 @@ spec:
 #              subPath: files
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-#      volumes:
-#      - name: {{ .Values.database_service_name }}-data
-#        persistentVolumeClaim:
-#          claimName: {{ .Values.database_service_name }}
-#        - name: drupal-nfs
-#          persistentVolumeClaim:
-#            claimName: drupal-nfs
+      volumes:
+        - name: drupal-nfs
+          persistentVolumeClaim:
+            claimName: drupal-nfs
 status: {}
