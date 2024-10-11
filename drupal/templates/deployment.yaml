@@ -39,7 +39,7 @@ spec:
           {{- toYaml .Values.readinessProbe | nindent 10 }}
         name: {{ .Values.site_name }}
         ports:
-        - containerPort: {{ .Values.config.port }}
+        - containerPort: {{ .Values.deployment.port }}
           protocol: TCP
         resources:
           {{- toYaml .Values.resources | nindent 10 }}

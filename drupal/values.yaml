@@ -9,9 +9,12 @@ autoscaling:
   maxReplicas: 5
   targetCPUUtilizationPercentage: 50
 
-# Need to nuke this
-config:
-  cim_update: false
+deployment:
+  port: 80
+
+service:
+  type: ClusterIP
+  port: 80
 
 image:
   repository: nginx
