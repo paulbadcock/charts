@@ -39,6 +39,7 @@ deployment:
     php_memory: 768M
     display_errors: ON
     config_env: nonprod
+    cim_update: true
 
 service:
   type: ClusterIP

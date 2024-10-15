@@ -26,6 +26,8 @@ spec:
             value: {{ .Values.deployment.env.php_memory }}
           - name: DISPLAY_ERRORS
             value: '{{ .Values.deployment.env.display_errors}}'
+          - name: DRUPAL_CIM_UPDATE
+            value: {{ .Values.deployment.env.cim_update }}
           - name: CONFIG_ENV
             value: {{ .Values.deployment.env.config_env }}
         envFrom:
